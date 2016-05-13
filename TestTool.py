@@ -194,13 +194,13 @@ class Prototype(wx.Frame):
            i=int(self.t2.GetValue())/int(self.t1.GetValue())
            while i>0:
                i=i-1
-               threading._start_new_thread(self.getCpuData(),())
+               threading._start_new_thread(self.getCpuData,())
                time.sleep(int(self.t1.GetValue()))
 
       def chargeDevice(self):
           flag=False
           dlist=s.getDeviceIDlist()
-          print dlist
+          #print dlist
           if len(dlist) ==0:
               flag=True
               return flag
@@ -222,7 +222,7 @@ class Prototype(wx.Frame):
 
       def getTextNo(self):
           tmp=self.t3.GetValue().split("\n")
-          l=len(tmp)
+          l=len(tmp)-1
           return l
 
       def getCpuData(self):
@@ -232,7 +232,7 @@ class Prototype(wx.Frame):
            if tmp =='':
                raise Exception(self.packageName+" is not found")
            else:
-               self.data=tmp[0]
+               self.data.append((self.getTextNo(),tmp[0]))
                self.t3.AppendText(tmp[0]+"\n")
 
 
