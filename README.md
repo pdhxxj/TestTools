@@ -6,25 +6,52 @@ UserGuild
 Before use this project,your need add this response--**wxpython3.0.3 wxwidgets uiautomator  HATT**
 
 
-wxpython&wxwidgets：
+Wxpython&wxwidgets：
 -------------------
 
-**1.down wxpython---git clone https://github.com/wxWidgets/wxPython
-2.down wxwidgets--git clone https://github.com/wxWidgets/wxWidgets
-3.goto wxpython dic---cd wxPython
-4.complie---sudo python build-wxpython.py --build_dir=../bld --osx_cocoa --install** 
+- Down wxpython
+
+	git clone https://github.com/wxWidgets/wxPython
+
+- Down wxwidgets
+
+	git clone https://github.com/wxWidgets/wxWidgets
+
+- Goto wxpython dic
+
+	cd wxPython
+
+- Complie
+
+	sudo python build-wxpython.py --build_dir=../bld --osx_cocoa --install** 
 
 
-uiautomator：
+Uiautomator：
 ------------
 
-**1.down uiautomator--git clone https://github.com/xiaocong/uiautomator
-2.goto uiautomator--cd uiautomator
-3.setup--python setup install**
+- Down uiautomator
+
+	git clone https://github.com/xiaocong/uiautomator
+
+- Goto uiautomator
+
+	cd uiautomator
+
+- Setup
+
+	python setup install**
 
 HATT:
 -----
 
-**1.down HATT--git clone https://github.com/pdhxxj/HATT
-2.goto HATT--cd HATT
-3.setup--python setup install**
+- Down HATT
+
+git clone https://github.com/pdhxxj/HATT
+
+- Goto HATT
+	
+	cd HATT
+
+- Setup
+
+	python setup install**
