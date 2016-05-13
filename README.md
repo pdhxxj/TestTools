@@ -4,6 +4,7 @@ UserGuild
 ---------
 
 Before use this project,your need add this response
+
 - wxpython3.0.3
 - wxwidgets 
 - uiautomator  
@@ -35,6 +36,7 @@ Wxpython&wxwidgets：
 ```
 
 - Complie
+
 ```shell
 	sudo python build-wxpython.py --build_dir=../bld --osx_cocoa --install
 ```
