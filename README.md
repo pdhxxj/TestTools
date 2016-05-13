@@ -3,8 +3,15 @@
 UserGuild
 ---------
 
-Before use this project,your need add this response--**wxpython3.0.3 wxwidgets uiautomator  HATT**
+Before use this project,your need add this response
+- wxpython3.0.3
+- wxwidgets 
+- uiautomator  
+- HATT
 
+
+Install Response
+---------
 
 Wxpython&wxwidgets：
 -------------------
@@ -50,7 +57,7 @@ Uiautomator：
 - Setup
 
 ```shell
-	python setup install**
+	python setup install
 ```
 
 HATT:
