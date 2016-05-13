@@ -29,7 +29,7 @@ Wxpython&wxwidgets：
 
 - Complie
 ```shell
-	sudo python build-wxpython.py --build_dir=../bld --osx_cocoa --install** 
+	sudo python build-wxpython.py --build_dir=../bld --osx_cocoa --install
 ```
 
 Uiautomator：
