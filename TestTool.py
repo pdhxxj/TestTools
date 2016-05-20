@@ -4,12 +4,11 @@ import time
 
 import wx.lib.plot as plot
 
-from Core.Info.performance import PerformanceInfo
-from Core.Info.system import SystemInfo
+import Core.Info.performance as p
+import Core.Info.system as s
 
 threading._DummyThread._Thread__stop = lambda x: 42
-p=PerformanceInfo()
-s=SystemInfo()
+
 ########################################################################
 
 ########################################################################
@@ -173,12 +172,12 @@ class Prototype(wx.Frame):
       def getFlow(self):
            if self.chargeDevice():
               raise Exception("device not found")
-           sflow=p.getCurFlowFromProc(self.packageName)
+           sflow=p.PerformanceInfo().getCurFlowFromProc(self.packageName)
            i=int(self.t2.GetValue())/int(self.t1.GetValue())
            while i>0:
                i=i-1
                time.sleep(int(self.t1.GetValue()))
-           eflow=p.getCurFlowFromProc(self.packageName)
+           eflow=p.PerformanceInfo().getCurFlowFromProc(self.packageName)
            flow=eflow-sflow
            return flow
 
@@ -199,7 +198,7 @@ class Prototype(wx.Frame):
 
       def chargeDevice(self):
           flag=False
-          dlist=s.getDeviceIDlist()
+          dlist=s.SystemInfo().getDeviceIDlist()
           #print dlist
           if len(dlist) ==0:
               flag=True
@@ -209,7 +208,7 @@ class Prototype(wx.Frame):
 
 
       def getMemData(self):
-          tmp=p.getMemFromDump(self.packageName)
+          tmp=p.PerformanceInfo().getMemFromDump(self.packageName)
           if self.chargeDevice():
               raise Exception("device not found")
           if tmp == "error" :
@@ -226,7 +225,8 @@ class Prototype(wx.Frame):
           return l
 
       def getCpuData(self):
-           tmp=p.getCpuFromDump(self.packageName)
+           tmp=p.PerformanceInfo().getCpuFromDump(self.packageName)
+           print tmp
            if self.chargeDevice():
               raise Exception("device not found")
            if tmp =='':
@@ -263,15 +263,18 @@ class Prototype(wx.Frame):
                avg=str(sum/len(temp))+"%"
                return avg
 
+      def getMaxValue(self):
+          tmp=self.t3.GetValue().split("\n")
+          tmp=tmp[:len(tmp)-1]
+          return max(tmp)
 
       def OnDraw(self, event):
 
            frm = wx.Frame(self, -1, 'demo', size=(600, 450))
            client = plot.PlotCanvas(frm)
-           line = plot.PolyLine(self.data, colour='pink', width=5, \
-                             legend='value')
+           line = plot.PolyLine(self.data, colour='pink', width=5, legend='value')
            gc = plot.PlotGraphics([line], 'demo', 'X', 'Y')
-           client.Draw(gc,xAxis=(0,self.getTextNo()),yAxis=(0,200000))
+           client.Draw(gc,xAxis=(0,self.getTextNo()),yAxis=(0,self.getMaxValue()))
            frm.Show()
 
 #----------------------------------------------------------------------
